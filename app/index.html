@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/angular.js"></script>
+</head>
+<body ng-app="testApp" ng-cloak ng-controller="testCtrl">
+
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="logo">
+                    <img src="{{header.logo}}"></img>
+                </div>
+                <p>{{header.pageTitle}}</p>
+                <img src="css/hamburger-menu.png" class="hamburger-menu"></img>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="content">
+    <div class="container">
+        <div class="row custom-margin">
+            <div class="date">Date: 01/10/2015</div>
+            <button class="custom-btn">{{header.btnBack}}</button>
+        </div>
+        <div class="row custom-margin">
+            <h4>{{header.btnFilter}}</h4>
+        </div>
+        <div class="row custom-margin">
+            <input type="text" placeholder="{{header.inputPlaceHolder}}" ng-model="fieldInput">
+            <button ng-click="filterData()" class="custom-btn">{{header.btnFind}}</button>
+        </div>
+    </div>
+</div>
+<div class="catalog">
+    <div class="container">
+        <div class="row" ng-repeat="singleLaptop in generalDataArr | filter:matchSearch">
+            <div class="col-xs-3">
+                <img src="{{singleLaptop.productImage}}" alt="">
+            </div>
+            <div class="col-xs-6">
+                <h5>{{singleLaptop.productName}}</h5>
+                <p>{{singleLaptop.productDsc}}</p>
+            </div>
+            <div>
+                <div>{{singleLaptop.currencyId}} {{singleLaptop.productPrice}}</div>
+                <button class="custom-btn">{{header.btnOrder}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="catalog-also">
+    <div class="container">
+        <div class="row custom-margin">
+            <h4>{{header.peopleViewedTitle}}</h4>
+        </div>
+        <div class="row custom-margin">
+            <div class="col-xs-4" ng-repeat="singleAlso in alsoSorted">
+                <img src="{{singleAlso.productImage}}" alt="">
+                <h5>{{singleAlso.currencyId}} {{singleAlso.productPrice}}</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="js/main.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/content.js"></script>
+</body>
+</html>
